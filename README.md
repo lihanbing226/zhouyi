@@ -383,7 +383,7 @@ uv run uvicorn backend.app.main:app \
 
 ```bash
 # 1. Fork 本仓库并克隆
-git clone https://github.com/your-username/zhou-yi.git
+git clone https://github.com/your-username/zhouyi.git
 
 # 2. 创建功能分支
 git checkout -b feature/your-feature-name
