@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "zhou-yi"
+version = "0.1.0"
+description = "周易算命网站 - 智能卜卦 + 八字命盘 + 数据看板"
+requires-python = ">=3.12"
+dependencies = [
+    # Web Framework
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+
+    # Database & ORM
+    "sqlalchemy[asyncio]>=2.0",
+    "alembic>=1.13",
+    "aiosqlite>=0.20",
+
+    # Data Validation & Config
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+
+    # Authentication
+    "python-jose[cryptography]>=3.3",
+    "passlib[bcrypt]>=1.7",
+
+    # Chinese Calendar & Astronomy
+    "ephem>=4.1",
+
+    # AI Integration
+    "anthropic>=0.40",
+    "httpx-sse>=0.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.27",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[tool.uv]
+# 使用 github 最新版本的 lunardate（支持 Python 3.12+）
+# 如果需要本地测试，改为其他提供者或版本
+
+[tool.uv.sources]
+lunardate = { git = "https://github.com/lidatong/lunardate.git" }
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["backend/app/tests"]
+python_files = ["test_*.py"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]  # line too long（由 formatter 处理）
+
+[tool.hatch.build.targets.wheel]
+packages = ["backend"]
