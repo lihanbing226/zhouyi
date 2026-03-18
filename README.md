@@ -22,16 +22,6 @@
 
 ---
 
-## 🖼️ 页面预览
-
-| 首页 | 卜卦页 |
-|------|--------|
-| ![首页](docs/screenshots/home.png) | ![卜卦](docs/screenshots/divination.png) |
-
-| 八字命盘 | 数据看板 |
-|----------|----------|
-| ![八字](docs/screenshots/bazi.png) | ![看板](docs/screenshots/dashboard.png) |
-
 ---
 
 ## 🛠️ 技术栈
